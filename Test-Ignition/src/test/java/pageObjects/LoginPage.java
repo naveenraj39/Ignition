@@ -27,6 +27,10 @@ public class LoginPage {
 	@CacheLookup
 	WebElement loginButton;
 	
+	@FindBy(xpath="(//*[@class='MuiGrid-root'])[3]")
+	@CacheLookup
+	WebElement Dropdown;
+	
 	public void setUserName(String uname) {
 		textEmail.clear();
 		textEmail.sendKeys(uname);
@@ -34,6 +38,10 @@ public class LoginPage {
 	public void setPassword(String pass) {
 		textPass.clear();
 		textPass.sendKeys(pass);
+	}
+	
+	public void dropDown(String Triomics) {
+		Dropdown.click();
 	}
 	public void clickLogin() {
 		loginButton.click();

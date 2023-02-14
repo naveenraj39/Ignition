@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.cucumber.java.en.*;
+import junit.framework.Assert;
 import pageObjects.LoginPage;
 
 public class Steps {
@@ -29,6 +30,8 @@ public class Steps {
 	public void user_in_login_page(String url) throws InterruptedException {
 		driver.get(url);
 	    Thread.sleep(6000);
+	    
+	   driver.getTitle();
 	}
 
 	
@@ -41,11 +44,17 @@ public class Steps {
 	    
 	}
 
-	@Then("click the login button")
+	@And("click the login button")
 	public void click_the_login_button() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[@class=\"MuiTypography-root MuiTypography-body1\"])[7]")));
 		lp.clickLogin();
+		
+	}
+	
+	@Then("select TPM from Dropdown")
+	public void selectDropdown() {
+		
 		
 	}
 
