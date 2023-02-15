@@ -1,9 +1,11 @@
 package pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage {
@@ -27,9 +29,10 @@ public class LoginPage {
 	@CacheLookup
 	WebElement loginButton;
 	
-	@FindBy(xpath="(//*[@class='MuiGrid-root'])[3]")
-	@CacheLookup
-	WebElement Dropdown;
+    @FindBy(xpath="//*[@class=\"MuiSelect-nativeInput\"]")
+    @CacheLookup
+    WebElement ele;
+	
 	
 	public void setUserName(String uname) {
 		textEmail.clear();
@@ -40,12 +43,14 @@ public class LoginPage {
 		textPass.sendKeys(pass);
 	}
 	
-	public void dropDown(String Triomics) {
-		Dropdown.click();
-	}
 	public void clickLogin() {
 		loginButton.click();
 	}
+	public void ele() {
+		ele.click();
+	}
+	
+		
 	
 	
 	
