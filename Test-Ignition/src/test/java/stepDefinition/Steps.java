@@ -54,14 +54,13 @@ public class Steps {
 		
 	}
 	
-	@And("select from Dropdown")
-	public void Dd() {
-	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(30));
-	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class=\"MuiSelect-nativeInput\"]")));
-    lp.ele();
-		
-		
-	}
+	
+	@And ("select from Dropdown")
+		public void select_from_dropdown() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@role='button']")));
+			lp.select();
+		}
 
 	@Then("Close the browser")
 	public void close_the_browser() throws InterruptedException {

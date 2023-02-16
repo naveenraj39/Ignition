@@ -29,10 +29,14 @@ public class LoginPage {
 	@CacheLookup
 	WebElement loginButton;
 	
-    @FindBy(xpath="//*[@class=\"MuiSelect-nativeInput\"]")
+    @FindBy(xpath="//*[@role='button']")
     @CacheLookup
-    WebElement ele;
-	
+    WebElement Dd;
+    @FindBy(xpath="//*[text()='DR.New Test2']")
+    @CacheLookup
+    WebElement ops;
+    
+    
 	
 	public void setUserName(String uname) {
 		textEmail.clear();
@@ -46,13 +50,11 @@ public class LoginPage {
 	public void clickLogin() {
 		loginButton.click();
 	}
-	public void ele() {
-		ele.click();
+	
+	public void select() {
+		Dd.click();
+		ops.click();
 	}
-	
-		
-	
-	
 	
 	
 }
