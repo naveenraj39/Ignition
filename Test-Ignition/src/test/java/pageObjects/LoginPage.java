@@ -36,6 +36,9 @@ public class LoginPage {
     @CacheLookup
     WebElement ops;
     
+    @FindBy(xpath="//*[@type='button']")
+    @CacheLookup
+    WebElement cli;
     
 	
 	public void setUserName(String uname) {
@@ -55,6 +58,8 @@ public class LoginPage {
 		Dd.click();
 		ops.click();
 	}
-	
+	public void Get() {
+		cli.click();
+	}
 	
 }

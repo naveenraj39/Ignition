@@ -62,10 +62,10 @@ public class Steps {
 			lp.select();
 		}
 
-	@Then("Close the browser")
-	public void close_the_browser() throws InterruptedException {
-		Thread.sleep(10000);
-	    driver.quit();
+	@Then("Click Get Started")
+	public void close_the_browser()  {
+		lp.Get();
+		
 	}
 
 
