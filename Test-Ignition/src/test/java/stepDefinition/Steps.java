@@ -19,13 +19,14 @@ public class Steps {
 	
 	public WebDriver driver;
 	public LoginPage lp;
+	public WebDriverWait wait;
 	
 	@Given("User access the browser")
 	public void user_access_the_browser() {
 		System.setProperty("webdriver.chrome.driver", "/Users/naveenraj/Downloads/chromedriver_mac64/chromedriver");
 	    driver = new ChromeDriver();
 		lp=new LoginPage(driver);
-	    
+	    wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	@When("user in login page {string}")
@@ -41,14 +42,13 @@ public class Steps {
 	public void enter_username_and_password(String email, String password) throws InterruptedException {
 	    lp.setUserName(email);
 	    lp.setPassword(password);
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[@class='MuiTouchRipple-root'])[2]")));
 	    
 	}
 
 	@And("click the login button")
 	public void click_the_login_button() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[@class=\"MuiTypography-root MuiTypography-body1\"])[7]")));
 		lp.clickLogin();
 		
@@ -57,7 +57,6 @@ public class Steps {
 	
 	@And ("select from Dropdown")
 		public void select_from_dropdown() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@role='button']")));
 			lp.select();
 		}
@@ -65,6 +64,9 @@ public class Steps {
 	@Then("Click Get Started")
 	public void close_the_browser()  {
 		lp.Get();
+		wait.until(ExpectedConditions.titleContains("Ignition"));
+		
+		driver.quit();
 		
 	}
 
