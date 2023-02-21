@@ -1,11 +1,9 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage {
@@ -40,6 +38,9 @@ public class LoginPage {
     @CacheLookup
     WebElement cli;
     
+    @FindBy(xpath="(//*[@type='button'])[3]")
+    @CacheLookup
+    WebElement start;
 	
 	public void setUserName(String uname) {
 		textEmail.clear();
@@ -56,10 +57,21 @@ public class LoginPage {
 	
 	public void select() {
 		Dd.click();
+	    
+	}	
+	
+	public void dropdown() {
 		ops.click();
 	}
+	
 	public void Get() {
 		cli.click();
 	}
+	
+	public void start() {
+	
+		start.click();
+	}
+	
 	
 }

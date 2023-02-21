@@ -1,9 +1,13 @@
 package stepDefinition;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 
-
+import org.codehaus.plexus.util.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,7 +16,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.cucumber.java.en.*;
-import junit.framework.Assert;
 import pageObjects.LoginPage;
 
 public class Steps {
@@ -39,18 +42,23 @@ public class Steps {
 
 	
 	@Then("enter username {string} and password {string}")
-	public void enter_username_and_password(String email, String password) throws InterruptedException {
+	public void enter_username_and_password(String email, String password) throws InterruptedException, IOException {
 	    lp.setUserName(email);
 	    lp.setPassword(password);
 	    
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[@class='MuiTouchRipple-root'])[2]")));
-	    
+		File ss = new File("//Users//naveenraj//Documents//SS");
+		TakesScreenshot ts = (TakesScreenshot)driver;
+		File as = ts.getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(ss, as);
+		Thread.sleep(3000); 
 	}
 
 	@And("click the login button")
 	public void click_the_login_button() {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[@class=\"MuiTypography-root MuiTypography-body1\"])[7]")));
 		lp.clickLogin();
+		 
 		
 	}
 	
@@ -59,17 +67,23 @@ public class Steps {
 		public void select_from_dropdown() {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@role='button']")));
 			lp.select();
+				
 		}
 
 	@Then("Click Get Started")
-	public void close_the_browser()  {
+	public void close_the_browser() throws InterruptedException  {
+		Thread.sleep(3000);
+		lp.dropdown();
 		lp.Get();
-		wait.until(ExpectedConditions.titleContains("Ignition"));
-		
-		driver.quit();
 		
 	}
 
-
+	@And("Search for the Site")
+	public void search_Site() {
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[@type='button'])[2]")));
+		lp.start();
+		
+	}
+	
 
 }

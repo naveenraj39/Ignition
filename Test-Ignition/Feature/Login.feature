@@ -7,3 +7,4 @@ Then enter username "naveenraj@triomics.in" and password "Hello@123"
 And click the login button
 And select from Dropdown
 Then Click Get Started
+And Search for the Site

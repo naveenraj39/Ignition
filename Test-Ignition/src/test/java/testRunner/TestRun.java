@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions
 (features=".//Feature/Login.feature",
  glue="stepDefinition",
- dryRun=false,
+ 
  monochrome=true,
  plugin= {"pretty","html:test-output"})
  
