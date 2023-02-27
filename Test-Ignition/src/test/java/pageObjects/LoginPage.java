@@ -71,6 +71,7 @@ public class LoginPage {
 	public void start() {
 	
 		start.click();
+		
 	}
 	
 	

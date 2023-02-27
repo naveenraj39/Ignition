@@ -80,7 +80,7 @@ public class Steps {
 
 	@And("Search for the Site")
 	public void search_Site() {
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[@type='button'])[2]")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[@type='button'])[3]")));
 		lp.start();
 		
 	}
