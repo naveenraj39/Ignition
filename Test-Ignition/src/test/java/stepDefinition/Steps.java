@@ -11,6 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -26,8 +27,10 @@ public class Steps {
 	
 	@Given("User access the browser")
 	public void user_access_the_browser() {
-		System.setProperty("webdriver.chrome.driver", "/Users/naveenraj/Downloads/chromedriver_mac64/chromedriver");
-	    driver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver", "/Users/naveenraj/Downloads/chromedriver_mac_arm64/chromedriver");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");
+		driver = new ChromeDriver(options);
 		lp=new LoginPage(driver);
 	    wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
